@@ -9,7 +9,7 @@ void Board::displayBoard() const
   std::print("┌");
   for (int i = 0; i < width; i++)
   {
-    std::print("─");
+    std::print("──");
   }
   std::print("┐\n");
 
@@ -19,7 +19,7 @@ void Board::displayBoard() const
     std::print("│");
 
     for (const auto &col : row) {
-      std::print("{}", col ? "#" : " ");
+      std::print("{}", col ? "██" : "  ");
     }
 
     std::print("│\n");
@@ -29,7 +29,7 @@ void Board::displayBoard() const
   std::print("└");
   for (int i = 0; i < width; i++)
   {
-    std::print("─");
+    std::print("──");
   }
   std::print("┘\n");
 }

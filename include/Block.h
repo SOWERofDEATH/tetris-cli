@@ -11,13 +11,12 @@ class Block
 public:
 	Block(int row, int column, BlockType type);
 
-private:
-		int row;
-		int column;
-		RotationState rotationState;
-		const BlockType type;
+	std::array<Cell, 4> getCells() const;
+	void                rotate();
 
-		std::array<Cell, 4> getCells() const;
+	RotationState rotationState;
+	BlockType     type;
+	Cell          anchorBlock;
 
 };
 

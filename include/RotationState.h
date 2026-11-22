@@ -3,10 +3,10 @@
 
 enum class RotationState
 {
- 	FIRST,
-  SECOND,
-  THIRD,
-  FORTH,
+ 	DEG0,
+  DEG90,
+  DEG180,
+  DEG270,
 };
 
 #endif // ROTATION_STATE_H
