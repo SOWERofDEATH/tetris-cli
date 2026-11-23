@@ -14,6 +14,9 @@ public:
 	std::array<Cell, 4> getCells() const;
 
 	void rotate();
+	void moveLeft();
+	void moveRight();
+	void moveDown();
 
 	RotationState rotationState;
 	BlockType type;

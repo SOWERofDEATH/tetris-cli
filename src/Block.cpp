@@ -27,6 +27,21 @@ void Block::rotate()
 	}
 }
 
+void Block::moveLeft()
+{
+	anchorBlock.column -= 1;
+}
+
+void Block::moveRight()
+{
+	anchorBlock.column += 1;
+}
+
+void Block::moveDown()
+{
+	anchorBlock.row += 1;
+}
+
 std::array<Cell, 4> Block::getCells() const
 {
 	std::array<Cell, 4> cells{};
