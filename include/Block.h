@@ -12,11 +12,12 @@ public:
 	Block(int row, int column, BlockType type);
 
 	std::array<Cell, 4> getCells() const;
-	void                rotate();
+
+	void rotate();
 
 	RotationState rotationState;
-	BlockType     type;
-	Cell          anchorBlock;
+	BlockType type;
+	Cell anchorBlock;
 
 };
 

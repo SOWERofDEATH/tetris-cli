@@ -54,3 +54,24 @@ bool Board::isOccupied(int row, int column) const
 
   return grid[row][column];
 }
+
+bool Board::canPlace(const Block &block) const
+{
+	for (const Cell& cell : block.getCells())
+	{
+		if (!isInsideGrid(cell.row, cell.column) || isOccupied(cell.row, cell.column))
+			return false;
+	}
+	return true;
+}
+
+void Board::lockBlock(const Block& block)
+{
+	for (const Cell& cell : block.getCells())
+	{
+		if (isInsideGrid(cell.row, cell.column))
+		{
+			grid[cell.row][cell.column] = true;
+		}
+	}
+}
