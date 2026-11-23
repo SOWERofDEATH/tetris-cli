@@ -3,8 +3,9 @@
 
 #include "BlockType.h"
 #include "RotationState.h"
-#include <array>
 #include "Cell.h"
+
+#include <array>
 
 class Block
 {
@@ -12,6 +13,7 @@ public:
 	Block(int row, int column, BlockType type);
 
 	std::array<Cell, 4> getCells() const;
+	static BlockType getRandomBlockType();
 
 	void rotate();
 	void moveLeft();

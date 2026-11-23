@@ -1,8 +1,9 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <vector>
 #include "Block.h"
+
+#include <vector>
 
 class Board
 {

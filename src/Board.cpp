@@ -1,4 +1,5 @@
 #include "Board.h"
+
 #include <print>
 
 Board::Board() : grid(height, std::vector<bool>(width, false)) {}
@@ -49,6 +50,8 @@ bool Board::isInsideGrid(int row, int column) const
 
 bool Board::isOccupied(int row, int column) const
 {
+	if (!isInsideGrid(row, column)) { return false; }
+
   return grid[row][column];
 }
 

@@ -1,9 +1,11 @@
 #include "Block.h"
 #include "BlockType.h"
 #include "RotationState.h"
-#include <array>
 
-Block::Block(int row, int column, BlockType type) : anchorBlock({row, column }), type(type), rotationState(RotationState::DEG0) {}
+#include <array>
+#include <random>
+
+Block::Block(int row, int column, BlockType type) : rotationState(RotationState::DEG0), type(type), anchorBlock({row, column }) {}
 
 void Block::rotate()
 {
@@ -223,4 +225,14 @@ std::array<Cell, 4> Block::getCells() const
 	}
 
 	return cells;
+}
+
+BlockType Block::getRandomBlockType()
+{
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
+
+	static std::uniform_int_distribution<int> dist(0, 6);
+
+	return static_cast<BlockType>(dist(gen));
 }
