@@ -7,7 +7,7 @@ void Board::displayBoard() const
 {
   // Print top of the Boarder
   std::print("┌");
-  for (int i = 0; i < width; i++)
+  for (int i = 0; i < width; ++i)
   {
     std::print("──");
   }
@@ -27,7 +27,7 @@ void Board::displayBoard() const
 
   // Print bottom of the border
   std::print("└");
-  for (int i = 0; i < width; i++)
+  for (int i = 0; i < width; ++i)
   {
     std::print("──");
   }
@@ -49,9 +49,6 @@ bool Board::isInsideGrid(int row, int column) const
 
 bool Board::isOccupied(int row, int column) const
 {
-  if (!isInsideGrid(row, column))
-    return false;
-
   return grid[row][column];
 }
 
