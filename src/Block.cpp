@@ -1,48 +1,9 @@
 #include "Block.h"
-#include "BlockType.h"
-#include "RotationState.h"
 
 #include <array>
 #include <random>
 
 Block::Block(int row, int column, BlockType type) : rotationState(RotationState::DEG0), type(type), anchorBlock({row, column }) {}
-
-void Block::rotate()
-{
-	switch (rotationState)
-	{
-		case RotationState::DEG0:
-			rotationState = RotationState::DEG90;
-			break;
-
-		case RotationState::DEG90:
-			rotationState = RotationState::DEG180;
-			break;
-
-		case RotationState::DEG180:
-			rotationState = RotationState::DEG270;
-			break;
-
-		case RotationState::DEG270:
-			rotationState = RotationState::DEG0;
-			break;
-	}
-}
-
-void Block::moveLeft()
-{
-	anchorBlock.column -= 1;
-}
-
-void Block::moveRight()
-{
-	anchorBlock.column += 1;
-}
-
-void Block::moveDown()
-{
-	anchorBlock.row += 1;
-}
 
 std::array<Cell, 4> Block::getCells() const
 {
@@ -235,4 +196,41 @@ BlockType Block::getRandomBlockType()
 	static std::uniform_int_distribution<int> dist(0, 6);
 
 	return static_cast<BlockType>(dist(gen));
+}
+
+void Block::rotate()
+{
+	switch (rotationState)
+	{
+		case RotationState::DEG0:
+			rotationState = RotationState::DEG90;
+			break;
+
+		case RotationState::DEG90:
+			rotationState = RotationState::DEG180;
+			break;
+
+		case RotationState::DEG180:
+			rotationState = RotationState::DEG270;
+			break;
+
+		case RotationState::DEG270:
+			rotationState = RotationState::DEG0;
+			break;
+	}
+}
+
+void Block::moveLeft()
+{
+	anchorBlock.column -= 1;
+}
+
+void Block::moveRight()
+{
+	anchorBlock.column += 1;
+}
+
+void Block::moveDown()
+{
+	anchorBlock.row += 1;
 }

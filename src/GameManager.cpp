@@ -1,6 +1,5 @@
 #include "GameManager.h"
 
-#include <print>
 #include <thread>
 
 GameManager::GameManager() : isRunning(false) {}
@@ -21,14 +20,13 @@ void GameManager::run()
 		if (now - lastDrop >= dropInterval)
 		{
 			lastDrop = now;
-			gravityStep();
 
-			std::print("\x1b[2J\x1b[H");
+			gravityStep();
 
 			clearScreen();
       drawFrame();
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(15));
+		std::this_thread::sleep_for(std::chrono::milliseconds(20));
 	}
 
 }
@@ -38,7 +36,7 @@ void GameManager::stop()
 	isRunning = false;
 }
 
-Block GameManager::getRandomActiveBlock()
+Block GameManager::getNextActiveBlock()
 {
  return Block {1, Board::width / 2, Block::getRandomBlockType()};
 }
@@ -61,7 +59,7 @@ void GameManager::gravityStep()
 
 void GameManager::spawnBlock()
 {
-	activeBlock = getRandomActiveBlock();
+	activeBlock = getNextActiveBlock();
 
 	if (!board.canPlace(activeBlock))
 	{

@@ -1,7 +1,6 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
-#include "Block.h"
 #include "Board.h"
 
 #include <chrono>
@@ -19,10 +18,11 @@ private:
 
 	bool isRunning;
 	Board board {};
-	Block activeBlock {getRandomActiveBlock()};
+	Block activeBlock {getNextActiveBlock()};
 	std::chrono::milliseconds dropInterval {500};
 
-	static Block getRandomActiveBlock();
+	static Block getNextActiveBlock();
+
 	void gravityStep();
 	void spawnBlock();
 	void drawFrame() const;
